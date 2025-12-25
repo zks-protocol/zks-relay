@@ -18,6 +18,7 @@
 use worker::*;
 
 mod entropy_pool;
+mod message_optimizer;
 mod vpn_room;
 
 pub use entropy_pool::EntropyPool;
@@ -72,7 +73,7 @@ async fn fetch(req: Request, env: Env, _ctx: Context) -> Result<Response> {
                 "version": "0.2.0",
                 "description": "ZKS-VPN P2P Relay with Swarm Entropy",
                 "endpoints": {
-                    "vpn_room": "/room/<room_id>?role=client|exit",
+                    "vpn_room": "/room/<room_id>?role=client|exit|swarm",
                     "entropy": "/entropy?size=32&n=10",
                     "entropy_ws": "wss://.../entropy (WebSocket for contributions)",
                     "health": "/health"
